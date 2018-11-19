@@ -1,5 +1,13 @@
-public abstract class Piece  {
+import java.util.List;
 
-    public abstract void move();
+public abstract class Piece  {
+    private int posX;
+    private int posY;
+
+    public abstract void move(int movePos);
+
+
+    public abstract List<String> legalMoves();
+
 
 }
