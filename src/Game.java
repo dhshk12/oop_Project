@@ -18,7 +18,7 @@ public class Game implements Serializable {
         this.x=x;
         this.y=y;
 
-    }
+    }   //asdsadasda
 
     public void start()
     {
