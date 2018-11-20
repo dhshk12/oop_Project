@@ -87,8 +87,7 @@ public class Game implements Serializable {
 
             board[8][1]=new Tiger();
 
-
-
+            board[0][2] = new Trap();
     }
 
     public Object[][] getBoard()
