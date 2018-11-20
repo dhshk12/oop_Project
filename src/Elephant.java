@@ -1,4 +1,9 @@
-package PACKAGE_NAME;
 
-public class Elephant {
+public class Elephant extends Piece {
+
+
+   public void move(){
+
+   };
+
 }

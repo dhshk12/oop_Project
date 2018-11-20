@@ -7,7 +7,7 @@ public class Game implements Serializable {
     private static final long serialVersionUID = 1L;
     private Player x;
     private Player y;
-    char[][] board= new char[9][7];
+    Object[][] board= new Object[9][7];
 
     Scanner in = new Scanner(System.in);
 
@@ -18,7 +18,7 @@ public class Game implements Serializable {
         this.x=x;
         this.y=y;
 
-    }   //asdsadasda
+    }
 
     public void start()
     {
@@ -31,6 +31,10 @@ public class Game implements Serializable {
         printBoard();
 
 
+        System.out.print("Enter your command: ");
+
+
+
     }
 
     public void printBoard()
@@ -39,7 +43,7 @@ public class Game implements Serializable {
         {
             for(int j=0;j<board[i].length;j++)
             {
-                System.out.print(board[i][j]+" ");
+                System.out.print(board[i][j].toString()+" ");
             }
             System.out.println();
         }
@@ -68,6 +72,15 @@ public class Game implements Serializable {
             board[5][4] = 'w';
             board[5][5] = 'w';
 
+            board[8][1]=new Tiger();
+
+
+
+    }
+
+    public Object[][] getBoard()
+    {
+        return this.board;
     }
 
 }
