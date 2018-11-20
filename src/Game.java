@@ -83,10 +83,10 @@ public class Game implements Serializable {
             board[2][0]=new Rat();
             board[2][2]=new Leopard();
             board[2][4]=new Wolf();
+            board[2][7]=new Elephant();
 
 
             board[8][1]=new Tiger();
-
             board[0][2] = new Trap();
     }
 
