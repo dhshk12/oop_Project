@@ -1,5 +1,5 @@
 public class Wolf extends Piece {
-    String symbol="w";
+    String symbol="f";
 
     public String toString()
     {
