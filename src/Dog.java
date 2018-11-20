@@ -1,9 +1,8 @@
-public class Dog {
-    String symbol="d";
+class Dog extends Piece {
 
 
     public String toString()
     {
-        return symbol;
+        return "d";
     }
 }

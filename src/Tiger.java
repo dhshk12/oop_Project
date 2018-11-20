@@ -1,9 +1,8 @@
-public class Tiger {
-   String symbol="t";
+class Tiger extends Piece {
 
 
-   public String toString()
+    public String toString()
    {
-       return symbol;
+       return "t";
    }
 }

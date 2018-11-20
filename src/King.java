@@ -1,9 +1,8 @@
-public class King extends Piece {
-    String symbol="k";
+class King extends Piece {
 
 
     public String toString()
     {
-        return symbol;
+        return "k";
     }
 }

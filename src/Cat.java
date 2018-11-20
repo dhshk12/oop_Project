@@ -1,9 +1,11 @@
-public class Cat {
-    String symbol="c";
+class Cat extends Piece {
 
+    public Cat()
+    {
 
+    }
     public String toString()
     {
-        return symbol;
+        return "c";
     }
 }

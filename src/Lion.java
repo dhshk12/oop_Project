@@ -1,9 +1,9 @@
-public class Lion extends Piece {
-    String symbol="n";
+class Lion extends Piece {
 
 
     public String toString()
     {
-        return symbol;
+        return "n";
     }
+
 }

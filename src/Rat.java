@@ -1,9 +1,8 @@
-public class Rat {
-    String symbol="r";
+class Rat extends Piece {
 
 
     public String toString()
     {
-        return symbol;
+        return "r";
     }
 }

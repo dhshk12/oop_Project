@@ -1,9 +1,8 @@
-public class Trap extends Piece {
-    String symbol="x";
+class Trap extends Piece {
 
 
     public String toString()
     {
-        return symbol;
+        return "x";
     }
 }

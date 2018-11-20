@@ -1,28 +1,27 @@
-public class Piece extends Game {
+class Piece extends Game {
 
-    public class location
+    class Location
     {
-        private int posX;
-        private int posY;
+        int posX;
+        int posY;
     }
 
-    private location loc;
-    private int strength;
+    private Location loc;
+    private int strength ;
     private int team;
 
 
-    public void move(location from, location to)
+    public void move(Location from, Location to)
     {
         int offsetX, offsetY;
-       location newLocation=null;
+       Location newLocation=null;
        offsetY = to.posY-from.posY;
        offsetX = to.posX - from.posX;
-       newLocation.posY = from.posY + offsetY;
+        assert newLocation != null;
+        newLocation.posY = from.posY + offsetY;
        newLocation.posX = from.posX + offsetX;
 
-
     }
-
 
     public void capture(Piece other)
     {
@@ -30,13 +29,13 @@ public class Piece extends Game {
         {
 
         }
-
     }
 
-    public String toString()
+    public void setStrength(int stg)
     {
-        return "";
+       this.strength=stg;
     }
+
 
 
 

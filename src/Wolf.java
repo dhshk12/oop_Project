@@ -1,8 +1,7 @@
-public class Wolf extends Piece {
-    String symbol="f"; //wolsdasd
+class Wolf extends Piece {
 
     public String toString()
     {
-        return symbol;
+        return "f";
     }
 }

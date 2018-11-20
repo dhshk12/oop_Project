@@ -1,15 +1,20 @@
 
-public class Elephant extends Piece {
-    String symbol="e";
+class Elephant extends Piece {
+    Location loc;
+
+
+    Elephant()
+    {
+
+    }
 
 
     public String toString()
     {
-        return symbol;
+        return "e";
     }
 
-   public void move(){
 
-   };
+
 
 }

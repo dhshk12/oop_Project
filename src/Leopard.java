@@ -1,9 +1,8 @@
-public class Leopard {
-    String symbol="l";
+class Leopard extends Piece {
 
 
     public String toString()
     {
-        return symbol;
+        return "l";
     }
 }
