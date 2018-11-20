@@ -88,18 +88,17 @@ public class Game implements Serializable {
             board[6][0]=new Elephant();
             board[6][2]=new Wolf();
             board[6][4]=new Leopard();
-            board[6[6]]=new Rat();
+            board[6][6]=new Rat();
             board[7][1]=new Cat();
             board[7][3]=new Trap();
             board[7][5]=new Dog();
             board[8][0]=new Tiger();
-            board[8][3]=new Trap();
-            board[8][4]=new King();
-            board[8][5]=new Trap();
+            board[8][2]=new Trap();
+            board[8][3]=new King();
+            board[8][4]=new Trap();
             board[8][6]=new Lion();
 
-            board[8][1]=new Tiger();
-            board[0][2] = new Trap();
+
     }
 
     public Object[][] getBoard()
