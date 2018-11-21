@@ -50,7 +50,7 @@ class Game implements Serializable {
             {
                 if(from[0] == xEnum.A)
             }*/
-        
+
 
         }
 
