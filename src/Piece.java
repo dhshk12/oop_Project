@@ -11,15 +11,17 @@ class Piece extends Game {
     private int team;
 
 
-    public void move(Location from, Location to)
+    public void move(Location to)
     {
-        int offsetX, offsetY;
+        /*int offsetX, offsetY;
        Location newLocation=null;
-       offsetY = to.posY-from.posY;
+       offsetY = to.posY - this.loc.posY;
        offsetX = to.posX - from.posX;
-       assert newLocation != null;
        newLocation.posY = from.posY + offsetY;
-       newLocation.posX = from.posX + offsetX;
+       newLocation.posX = from.posX + offsetX;*/
+
+
+
 
     }
 
@@ -49,11 +51,17 @@ class Piece extends Game {
         return this.team;
     }
 
-    public void setLocation(Location temp)
+    public void setLocation(int x, int y)
     {
-        this.loc.posX=temp.posX;
-        this.loc.posY=temp.posY; 
+        Location newLoc= new Location();
+        newLoc.posX=x;
+        newLoc.posY=y;
+        this.loc=newLoc;
+    }
 
+    public Location getLocation()
+    {
+        return this.loc;
     }
 
 

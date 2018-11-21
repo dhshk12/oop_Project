@@ -11,6 +11,7 @@ class Game implements Serializable {
     private final Object[][] board= new Object[9][7];
     private final Scanner in = new Scanner(System.in);
 
+
     Game() {}
 
     public Game(Player x, Player y)
@@ -22,15 +23,37 @@ class Game implements Serializable {
     public void start()
     {
         initializeBoard();
+        ArrayList<Piece> xPieces=x.getPieces();
+        ArrayList<Piece> yPieces=y.getPieces();
+
         System.out.println("Enter Player 1's name:");
         x.setName(in.next());
         System.out.println("Enter Player 2's name:");
         y.setName(in.next());
 
         printBoard();
+        String command1;
+        String command2;
+
 
         System.out.print("Player 1, enter your command: ");
-        System.out.print("Player 2, enter your command: ");
+        command1=in.next();
+
+
+        if(command1.substring(0,4).equals("move"))
+        {
+            String from= command1.substring(4,5);
+            System.out.print(from);
+
+
+            /*for(int i=0 ;i<xPieces.size();i++)
+            {
+                if(from[0] == xEnum.A)
+            }*/
+        
+
+        }
+
 
     }
 
@@ -63,18 +86,31 @@ class Game implements Serializable {
             board[5][1] = "w"; board[5][2] = "w";
             board[5][4] = "w"; board[5][5] = "w";
 
+
             board[0][0]=xPieces.get(0);
+            xPieces.get(0).setLocation(0,0);
             board[0][2]=xPieces.get(6);//trap 3
+            xPieces.get(6).setLocation(0,2);
             board[0][3]=xPieces.get(2);
+            xPieces.get(2).setLocation(0,3);
             board[0][4]=xPieces.get(1); //trap1
+            xPieces.get(1).setLocation(0,4);
             board[0][6]=xPieces.get(4);
+            xPieces.get(4).setLocation(0,6);
             board[1][1]=xPieces.get(5);
+            xPieces.get(5).setLocation(1,1);
             board[1][3]=xPieces.get(3);//trap 2
+            xPieces.get(3).setLocation(1,3);
             board[1][5]=xPieces.get(7);
+            xPieces.get(7).setLocation(1,5);
             board[2][0]=xPieces.get(8);
+            xPieces.get(8).setLocation(2,0);
             board[2][2]=xPieces.get(9);
+            xPieces.get(9).setLocation(2,2);
             board[2][4]=xPieces.get(10);
+            xPieces.get(10).setLocation(2,4);
             board[2][6]=xPieces.get(11);
+            xPieces.get(11).setLocation(2,6);
 
             for (int i=0;i<xPieces.size();i++)
             {
@@ -102,17 +138,29 @@ class Game implements Serializable {
             }
 
             board[6][0]=yPieces.get(11);
+            yPieces.get(0).setLocation(6,0);
             board[6][2]=yPieces.get(10);
+            yPieces.get(0).setLocation(6,2);
             board[6][4]=yPieces.get(9);
+            yPieces.get(0).setLocation(6,4);
             board[6][6]=yPieces.get(8);
+            yPieces.get(0).setLocation(6,6);
             board[7][1]=yPieces.get(7);
+            yPieces.get(0).setLocation(7,1);
             board[7][3]=yPieces.get(3); //trap 2
+            yPieces.get(0).setLocation(7,3);
             board[7][5]=yPieces.get(5);
+            yPieces.get(0).setLocation(7,5);
             board[8][0]=yPieces.get(4);
+            yPieces.get(0).setLocation(8,0);
             board[8][2]=yPieces.get(1); //trap1
+            yPieces.get(0).setLocation(8,2);
             board[8][3]=yPieces.get(2);
+            yPieces.get(0).setLocation(8,3);
             board[8][4]=yPieces.get(6); //trap3
+            yPieces.get(0).setLocation(8,4);
             board[8][6]=yPieces.get(0);
+            yPieces.get(0).setLocation(8,6);
 
         for (int i=0;i<yPieces.size();i++)
         {
