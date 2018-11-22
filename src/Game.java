@@ -98,28 +98,28 @@ class Game implements Serializable {
             board[5][4] = "w"; board[5][5] = "w";
 
 
-            board[0][0]=xPieces.get(0);
+            board[0][0]=xPieces.get(0); //Lion
             xPieces.get(0).setLocation(0,0);
             board[0][2]=xPieces.get(6);//trap 3
             xPieces.get(6).setLocation(0,2);
-            board[0][3]=xPieces.get(2);
+            board[0][3]=xPieces.get(2); //King
             xPieces.get(2).setLocation(0,3);
             board[0][4]=xPieces.get(1); //trap1
             xPieces.get(1).setLocation(0,4);
-            board[0][6]=xPieces.get(4);
+            board[0][6]=xPieces.get(4); //Tiger
             xPieces.get(4).setLocation(0,6);
-            board[1][1]=xPieces.get(5);
+            board[1][1]=xPieces.get(5); //Dog
             xPieces.get(5).setLocation(1,1);
             board[1][3]=xPieces.get(3);//trap 2
-            xPieces.get(3).setLocation(1,3);
+            xPieces.get(3).setLocation(1,3); //Cat
             board[1][5]=xPieces.get(7);
-            xPieces.get(7).setLocation(1,5);
+            xPieces.get(7).setLocation(1,5); //Rat
             board[2][0]=xPieces.get(8);
-            xPieces.get(8).setLocation(2,0);
+            xPieces.get(8).setLocation(2,0); //Leopard
             board[2][2]=xPieces.get(9);
-            xPieces.get(9).setLocation(2,2);
+            xPieces.get(9).setLocation(2,2); // Wolf
             board[2][4]=xPieces.get(10);
-            xPieces.get(10).setLocation(2,4);
+            xPieces.get(10).setLocation(2,4); // Elephant
             board[2][6]=xPieces.get(11);
             xPieces.get(11).setLocation(2,6);
 

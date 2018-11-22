@@ -1,6 +1,8 @@
 class Lion extends Piece {
 
-    String symbol;
+    private String symbol;
+
+
 
     Lion()
     {

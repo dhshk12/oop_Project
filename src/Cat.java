@@ -1,8 +1,8 @@
 class Cat extends Piece {
-
-    public Cat()
+    private String symbol;
+    Cat()
     {
-
+        this.symbol = "c";
     }
     public String toString()
     {
