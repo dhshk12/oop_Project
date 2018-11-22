@@ -24,6 +24,9 @@ class Game implements Serializable {
     {
         initializeBoard();
 
+        ArrayList<Piece> test= y.getPieces();
+        System.out.println(test.get(11).getSymbol());
+
         System.out.println("Enter Player 1's name:");
         x.setName(in.next());
         System.out.println("Enter Player 2's name:");
@@ -164,9 +167,11 @@ class Game implements Serializable {
                 { xPieces.get(i).setStrength(1); }
                 xPieces.get(i).setTeam(0);
             }
-
+            String temp;
             board[6][0]=yPieces.get(11);
             yPieces.get(11).setLocation(6,0);
+            temp=yPieces.get(11).getSymbol();
+            yPieces.get(11).setSymbol(temp.toUpperCase());
             board[6][2]=yPieces.get(10);
             yPieces.get(10).setLocation(6,2);
             board[6][4]=yPieces.get(9);

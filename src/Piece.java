@@ -19,6 +19,7 @@ class Piece extends Game {
         if(board[loc.posX][loc.posY].equals("w"))
         {
             System.out.println("Invalid move");
+
         }else
         {
             board[loc.posX][loc.posY]="O";
