@@ -172,28 +172,61 @@ class Game implements Serializable {
             yPieces.get(11).setLocation(6,0);
             temp=yPieces.get(11).getSymbol();
             yPieces.get(11).setSymbol(temp.toUpperCase());
+
             board[6][2]=yPieces.get(10);
             yPieces.get(10).setLocation(6,2);
+            temp=yPieces.get(10).getSymbol();
+            yPieces.get(10).setSymbol(temp.toUpperCase());
+
             board[6][4]=yPieces.get(9);
             yPieces.get(9).setLocation(6,4);
+            temp=yPieces.get(9).getSymbol();
+            yPieces.get(9).setSymbol(temp.toUpperCase());
+
             board[6][6]=yPieces.get(8);
             yPieces.get(8).setLocation(6,6);
+            temp=yPieces.get(8).getSymbol();
+            yPieces.get(8).setSymbol(temp.toUpperCase());
+
             board[7][1]=yPieces.get(7);
             yPieces.get(7).setLocation(7,1);
+            temp=yPieces.get(7).getSymbol();
+            yPieces.get(7).setSymbol(temp.toUpperCase());
+
             board[7][3]=yPieces.get(3); //trap 2
             yPieces.get(3).setLocation(7,3);
+            temp=yPieces.get(3).getSymbol();
+            yPieces.get(3).setSymbol(temp.toUpperCase());
+
             board[7][5]=yPieces.get(5);
             yPieces.get(5).setLocation(7,5);
+            temp=yPieces.get(5).getSymbol();
+            yPieces.get(5).setSymbol(temp.toUpperCase());
+
             board[8][0]=yPieces.get(4);
             yPieces.get(4).setLocation(8,0);
+            temp=yPieces.get(4).getSymbol();
+            yPieces.get(4).setSymbol(temp.toUpperCase());
+
             board[8][2]=yPieces.get(1); //trap1
             yPieces.get(1).setLocation(8,2);
+            temp=yPieces.get(1).getSymbol();
+            yPieces.get(1).setSymbol(temp.toUpperCase());
+
             board[8][3]=yPieces.get(2);
             yPieces.get(2).setLocation(8,3);
+            temp=yPieces.get(2).getSymbol();
+            yPieces.get(2).setSymbol(temp.toUpperCase());
+
             board[8][4]=yPieces.get(6); //trap3
             yPieces.get(6).setLocation(8,4);
+            temp=yPieces.get(6).getSymbol();
+            yPieces.get(6).setSymbol(temp.toUpperCase());
+
             board[8][6]=yPieces.get(0);
             yPieces.get(0).setLocation(8,6);
+            temp=yPieces.get(0).getSymbol();
+            yPieces.get(0).setSymbol(temp.toUpperCase());
 
         for (int i=0;i<yPieces.size();i++)
         {
