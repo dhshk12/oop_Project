@@ -1,7 +1,7 @@
 class Wolf extends Piece {
     private String symbol;
     Wolf(){
-        this.symbol = "w";
+        this.symbol = "f";
     }
     public String toString()
     {
