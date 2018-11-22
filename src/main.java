@@ -1,5 +1,6 @@
 import java.util.Scanner;
 
+
 class main {
     public static void main(String[] args)
     {
@@ -16,9 +17,6 @@ class main {
                 p2 = new Player();
                 Game g1 = new Game(p1, p2);
                 g1.start();
-
-
-
 
 
             } else if (opt == 2) {

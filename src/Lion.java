@@ -2,8 +2,6 @@ class Lion extends Piece {
 
     private String symbol;
 
-
-
     Lion()
     {
         this.symbol="n";
