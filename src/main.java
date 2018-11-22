@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 
-class main {
+class Main {
     public static void main(String[] args)
     {
         Player p1;
