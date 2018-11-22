@@ -6,6 +6,15 @@ class Dog extends Piece {
 
     public String toString()
     {
-        return "d";
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
+    }
+
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
     }
 }

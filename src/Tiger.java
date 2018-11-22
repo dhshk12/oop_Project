@@ -5,7 +5,16 @@ class Tiger extends Piece {
     }
 
     public String toString()
-   {
-       return "t";
-   }
+    {
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
+    }
+
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
+    }
 }

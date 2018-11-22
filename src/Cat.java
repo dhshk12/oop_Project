@@ -6,6 +6,15 @@ class Cat extends Piece {
     }
     public String toString()
     {
-        return "c";
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
+    }
+
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
     }
 }

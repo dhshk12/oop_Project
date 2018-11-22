@@ -6,6 +6,15 @@ class Rat extends Piece {
     }
     public String toString()
     {
-        return "r";
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
+    }
+
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
     }
 }

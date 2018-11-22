@@ -6,6 +6,15 @@ class Trap extends Piece {
 
     public String toString()
     {
-        return "x";
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
+    }
+
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
     }
 }

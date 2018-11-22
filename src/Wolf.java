@@ -5,6 +5,15 @@ class Wolf extends Piece {
     }
     public String toString()
     {
-        return "f";
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
+    }
+
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
     }
 }
