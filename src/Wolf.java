@@ -16,8 +16,5 @@ class Wolf extends Piece {
     {
         this.symbol=letter;
     }
-    public String getSymbol()
-    {
-        return this.symbol;
-    }
+
 }
