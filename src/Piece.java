@@ -14,21 +14,30 @@ class Piece extends Game {
     private String symbol;
 
 
-    public Object[][] move(Location to,Object[][] board)
+    public boolean move(Location to,Object[][] board)
     {
-        if(board[loc.posX][loc.posY].equals("w"))
+        if(board[to.posX][to.posY].equals("w"))
         {
             System.out.println("Invalid move");
-
-        }else
+            return false;
+        }else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)
+        {
+            board[loc.posX][loc.posY]="O";
+            this.symbol=getSymbol();
+            board[to.posX][to.posY]=this.symbol;
+        }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)
         {
             board[loc.posX][loc.posY]="O";
             this.symbol=getSymbol();
             board[to.posX][to.posY]=this.symbol;
         }
+        else
+        {
+            System.out.println("Invalid move");
+            return false;
+        }
 
-        return board;
-
+        return true;
     }
 
     public void capture(Piece other)

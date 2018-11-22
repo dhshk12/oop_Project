@@ -1,7 +1,6 @@
 class Leopard extends Piece {
 
     private String symbol;
-
     Leopard()
     {
         this.symbol="l";
@@ -10,7 +9,6 @@ class Leopard extends Piece {
     public String toString() {
         return "l";
     }
-
 
     public String getSymbol() {
         return this.symbol;

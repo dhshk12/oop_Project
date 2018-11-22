@@ -11,7 +11,6 @@ class Game implements Serializable {
     public Object[][] board= new Object[9][7];
     private final Scanner in = new Scanner(System.in);
 
-
     Game() {}
 
     public Game(Player x, Player y)
@@ -23,9 +22,6 @@ class Game implements Serializable {
     public void start()
     {
         initializeBoard();
-
-        ArrayList<Piece> test= y.getPieces();
-        System.out.println(test.get(11).getSymbol());
 
         System.out.println("Enter Player 1's name:");
         x.setName(in.next());
@@ -43,7 +39,7 @@ class Game implements Serializable {
                 status=moveCommand(x, command1);
             }
         }
-
+        printBoard();
         status=false;
         while(status==false) {
             String command2;
@@ -53,6 +49,7 @@ class Game implements Serializable {
                 status=moveCommand(y, command2);
             }
         }
+        printBoard();
     }
 
     private boolean moveCommand(Player p,String command)
@@ -76,19 +73,18 @@ class Game implements Serializable {
         {
             if((pPieces.get(i).getLocation().posX==xFrom) && (pPieces.get(i).getLocation().posY==yFrom))
             {
-               board=pPieces.get(i).move(toLoc,board);
-               printBoard();
-               status = true;
-               break;
+                status=pPieces.get(i).move(toLoc,board);
+                break;
             }
         }
+
         if(status==false)
         { System.out.print("Invalid move "); }
 
         return status;
     }
 
-    private void printBoard()
+    public void printBoard()
     {
         for (Object[] aBoard : board) {
             for (Object anABoard : aBoard) {
@@ -149,8 +145,6 @@ class Game implements Serializable {
                 { xPieces.get(i).setTeam(0); }
                 else if(xPieces.get(i).getClass()==Elephant.class)
                 { xPieces.get(i).setStrength(8); }
-                else if(xPieces.get(i).getClass()==Lion.class)
-                { xPieces.get(i).setStrength(7); }
                 else if(xPieces.get(i).getClass()==Lion.class)
                 { xPieces.get(i).setStrength(7); }
                 else if(xPieces.get(i).getClass()==Tiger.class)
@@ -234,8 +228,6 @@ class Game implements Serializable {
             { yPieces.get(i).setTeam(1); }
             else if(yPieces.get(i).getClass()==Elephant.class)
             { yPieces.get(i).setStrength(8); }
-            else if(yPieces.get(i).getClass()==Lion.class)
-            { yPieces.get(i).setStrength(7); }
             else if(yPieces.get(i).getClass()==Lion.class)
             { yPieces.get(i).setStrength(7); }
             else if(yPieces.get(i).getClass()==Tiger.class)

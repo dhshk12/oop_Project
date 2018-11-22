@@ -1,6 +1,7 @@
 class Lion extends Piece {
 
     private String symbol;
+    Location loc;
 
     Lion()
     {
@@ -20,4 +21,15 @@ class Lion extends Piece {
     {
         this.symbol=letter;
     }
+
+  /*  public Object[][] move(Location to,Object[][] board)
+    {
+            board[loc.posX][loc.posY]="O";
+            this.symbol=getSymbol();
+            board[to.posX][to.posY]=this.symbol;
+
+        return board;
+    }
+    */
+
 }
