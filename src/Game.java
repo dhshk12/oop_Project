@@ -47,10 +47,10 @@ class Game implements Serializable {
 
             Piece.Location toLoc= new Piece.Location();
             int xTo= x.convert(to.charAt(0));
-            toLoc.posX=xTo;
-            toLoc.posY=board.length-(Integer.parseInt(to.substring(1)));
-            int xFrom= x.convert(from.charAt(0));
-            int yFrom= board.length-(Integer.parseInt(from.substring(1)));
+            toLoc.posX=board.length-(Integer.parseInt(to.substring(1)));
+            toLoc.posY=xTo;
+            int xFrom= board.length-(Integer.parseInt(from.substring(1)));
+            int yFrom= x.convert(from.charAt(0));
 
 
             for(int i=0 ;i<xPieces.size();i++)
