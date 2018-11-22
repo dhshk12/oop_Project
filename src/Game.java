@@ -23,22 +23,24 @@ class Game implements Serializable {
     public void start()
     {
         initializeBoard();
-        ArrayList<Piece> xPieces=x.getPieces();
-        ArrayList<Piece> yPieces=y.getPieces();
 
         System.out.println("Enter Player 1's name:");
         x.setName(in.next());
         System.out.println("Enter Player 2's name:");
         y.setName(in.next());
-
         printBoard();
+
+        p1Move();
+        p2Move();
+
+    }
+
+    private void p1Move()
+    {
+        ArrayList<Piece> xPieces=x.getPieces();
         String command1;
-        String command2;
-
-
         System.out.print(x.getName()+", enter your command: ");
         command1=in.next();
-
         if(command1.substring(0,4).equals("move"))
         {
             xEnum x=xEnum.A;
@@ -58,15 +60,47 @@ class Game implements Serializable {
                 if((xPieces.get(i).getLocation().posX==xFrom) && (xPieces.get(i).getLocation().posY==yFrom))
                 {
                     board=xPieces.get(i).move(toLoc,board);
+                    printBoard();
                     break;
                 }
             }
-
-            printBoard();
+            System.out.println("You don't have the piece");
         }
-
-
     }
+
+    private void p2Move()
+    {
+        ArrayList<Piece> yPieces=y.getPieces();
+        String command2;
+        System.out.print(y.getName()+", enter your command: ");
+        command2=in.next();
+        if(command2.substring(0,4).equals("move"))
+        {
+            xEnum x=xEnum.A;
+            String from= command2.substring(4,6);
+            String to=command2.substring(6,8);
+
+            Piece.Location toLoc= new Piece.Location();
+            int xTo= x.convert(to.charAt(0));
+            toLoc.posX=board.length-(Integer.parseInt(to.substring(1)));
+            toLoc.posY=xTo;
+            int xFrom= board.length-(Integer.parseInt(from.substring(1)));
+            int yFrom= x.convert(from.charAt(0));
+
+            for(int i=0 ;i<yPieces.size();i++)
+            {
+                if((yPieces.get(i).getLocation().posX==xFrom) && (yPieces.get(i).getLocation().posY==yFrom))
+                {
+                    board=yPieces.get(i).move(toLoc,board);
+                    printBoard();
+                    break;
+                }
+            }
+            System.out.println("You don't have the piece");
+        }
+    }
+
+
 
     private void printBoard()
     {

@@ -16,16 +16,15 @@ class Piece extends Game {
 
     public Object[][] move(Location to,Object[][] board)
     {
-
         if(board[loc.posX][loc.posY].equals("w"))
         {
             System.out.println("Invalid move");
+        }else
+        {
+            board[loc.posX][loc.posY]="O";
+            this.symbol=getSymbol();
+            board[to.posX][to.posY]=this.symbol;
         }
-
-        board[loc.posX][loc.posY]="O";
-        this.symbol=getSymbol();
-        System.out.println(this.symbol);
-        board[to.posX][to.posY]=this.symbol;
 
         return board;
 
