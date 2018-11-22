@@ -30,27 +30,29 @@ class Game implements Serializable {
         y.setName(in.next());
         printBoard();
 
-        String command1;
-        System.out.print(x.getName()+", enter your command: ");
-        command1=in.next();
+        boolean status=false;
+        while(status==false) {
+            String command1;
+            System.out.print(x.getName() + ", enter your command: ");
+            command1 = in.next();
 
-        if(command1.substring(0,4).equals("move"))
-        {
-            moveCommand(x,command1);
+            if (command1.substring(0, 4).equals("move")) {
+                status=moveCommand(x, command1);
+            }
         }
 
-        String command2;
-
-        System.out.print(y.getName()+", enter your command: ");
-        command2=in.next();
-        if(command2.substring(0,4).equals("move"))
-        {
-            moveCommand(y,command2);
+        status=false;
+        while(status==false) {
+            String command2;
+            System.out.print(y.getName() + ", enter your command: ");
+            command2 = in.next();
+            if (command2.substring(0, 4).equals("move")) {
+                status=moveCommand(y, command2);
+            }
         }
-
     }
 
-    private void moveCommand(Player p,String command)
+    private boolean moveCommand(Player p,String command)
     {
         ArrayList<Piece> pPieces =p.getPieces();
         xEnum x=xEnum.A;
@@ -77,8 +79,10 @@ class Game implements Serializable {
                break;
             }
         }
-        if(status == false)
-            System.out.println("You don't have the piece");
+        if(status==false)
+        { System.out.print("Invalid move "); }
+
+        return status;
     }
 
     private void printBoard()
