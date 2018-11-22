@@ -58,11 +58,12 @@ class Game implements Serializable {
         String to=command.substring(6,8);
 
         Piece.Location toLoc= new Piece.Location();
-        
 
         int xTo= x.convert(to.charAt(0));
+
         toLoc.posX=board.length-(Integer.parseInt(to.substring(1)));
         toLoc.posY=xTo;
+
         int xFrom= board.length-(Integer.parseInt(from.substring(1)));
         int yFrom= x.convert(from.charAt(0));
 
@@ -159,27 +160,27 @@ class Game implements Serializable {
             }
 
             board[6][0]=yPieces.get(11);
-            yPieces.get(0).setLocation(6,0);
+            yPieces.get(11).setLocation(6,0);
             board[6][2]=yPieces.get(10);
-            yPieces.get(0).setLocation(6,2);
+            yPieces.get(10).setLocation(6,2);
             board[6][4]=yPieces.get(9);
-            yPieces.get(0).setLocation(6,4);
+            yPieces.get(9).setLocation(6,4);
             board[6][6]=yPieces.get(8);
-            yPieces.get(0).setLocation(6,6);
+            yPieces.get(8).setLocation(6,6);
             board[7][1]=yPieces.get(7);
-            yPieces.get(0).setLocation(7,1);
+            yPieces.get(7).setLocation(7,1);
             board[7][3]=yPieces.get(3); //trap 2
-            yPieces.get(0).setLocation(7,3);
+            yPieces.get(3).setLocation(7,3);
             board[7][5]=yPieces.get(5);
-            yPieces.get(0).setLocation(7,5);
+            yPieces.get(5).setLocation(7,5);
             board[8][0]=yPieces.get(4);
-            yPieces.get(0).setLocation(8,0);
+            yPieces.get(4).setLocation(8,0);
             board[8][2]=yPieces.get(1); //trap1
-            yPieces.get(0).setLocation(8,2);
+            yPieces.get(1).setLocation(8,2);
             board[8][3]=yPieces.get(2);
-            yPieces.get(0).setLocation(8,3);
+            yPieces.get(2).setLocation(8,3);
             board[8][4]=yPieces.get(6); //trap3
-            yPieces.get(0).setLocation(8,4);
+            yPieces.get(6).setLocation(8,4);
             board[8][6]=yPieces.get(0);
             yPieces.get(0).setLocation(8,6);
 

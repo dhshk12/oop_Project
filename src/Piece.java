@@ -32,7 +32,10 @@ class Piece extends Game {
 
     public void capture(Piece other)
     {
-
+        if(this.getTeam()!=other.getTeam() && this.getStrength()>=other.getStrength())
+        {
+            //capture;
+        }
     }
 
     public void setStrength(int stg)
