@@ -1,9 +1,23 @@
 class Lion extends Piece {
 
+    String symbol;
+
+    Lion()
+    {
+        this.symbol="n";
+    }
 
     public String toString()
     {
-        return "n";
+        return this.symbol;
+    }
+    public String getSymbol()
+    {
+        return this.symbol;
     }
 
+    public void setSymbol(String letter)
+    {
+        this.symbol=letter;
+    }
 }

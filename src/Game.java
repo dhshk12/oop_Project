@@ -8,7 +8,7 @@ class Game implements Serializable {
     private static final long serialVersionUID = 1L;
     private Player x;
     private Player y;
-    private final Object[][] board= new Object[9][7];
+    public Object[][] board= new Object[9][7];
     private final Scanner in = new Scanner(System.in);
 
 
@@ -36,22 +36,33 @@ class Game implements Serializable {
         String command2;
 
 
-        System.out.print("Player 1, enter your command: ");
+        System.out.print(x.getName()+", enter your command: ");
         command1=in.next();
-
 
         if(command1.substring(0,4).equals("move"))
         {
-            String from= command1.substring(4,5);
-            System.out.print(from);
+            xEnum x=xEnum.A;
+            String from= command1.substring(4,6);
+            String to=command1.substring(6,8);
+
+            Piece.Location toLoc= new Piece.Location();
+            int xTo= x.convert(to.charAt(0));
+            toLoc.posX=xTo;
+            toLoc.posY=board.length-(Integer.parseInt(to.substring(1)));
+            int xFrom= x.convert(from.charAt(0));
+            int yFrom= board.length-(Integer.parseInt(from.substring(1)));
 
 
-            /*for(int i=0 ;i<xPieces.size();i++)
+            for(int i=0 ;i<xPieces.size();i++)
             {
-                if(from[0] == xEnum.A)
-            }*/
+                if((xPieces.get(i).getLocation().posX==xFrom) && (xPieces.get(i).getLocation().posY==yFrom))
+                {
+                    board=xPieces.get(i).move(toLoc,board);
+                    break;
+                }
+            }
 
-
+            printBoard();
         }
 
 
