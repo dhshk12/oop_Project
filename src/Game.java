@@ -66,17 +66,19 @@ class Game implements Serializable {
 
         int xFrom= board.length-(Integer.parseInt(from.substring(1)));
         int yFrom= x.convert(from.charAt(0));
-
+        boolean status = false;
        for(int i=0 ;i<pPieces.size();i++)
         {
             if((pPieces.get(i).getLocation().posX==xFrom) && (pPieces.get(i).getLocation().posY==yFrom))
             {
                board=pPieces.get(i).move(toLoc,board);
                printBoard();
+               status = true;
                break;
             }
         }
-        System.out.println("You don't have the piece");
+        if(status == false)
+            System.out.println("You don't have the piece");
     }
 
     private void printBoard()
