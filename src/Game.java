@@ -10,6 +10,8 @@ class Game implements Serializable {
     private Player y;
     public Object[][] board= new Object[9][7];
     private final Scanner in = new Scanner(System.in);
+    ArrayList<Piece> xPieces;
+    ArrayList<Piece> yPieces;
 
     Game() {}
 
@@ -17,6 +19,8 @@ class Game implements Serializable {
     {
         this.x=x;
         this.y=y;
+        xPieces=x.getPieces();
+        yPieces=y.getPieces();
     }
 
     public void start()
@@ -51,6 +55,8 @@ class Game implements Serializable {
         }
         printBoard();
     }
+
+
 
     private boolean moveCommand(Player p,String command)
     {
@@ -96,8 +102,6 @@ class Game implements Serializable {
 
     private void initializeBoard()
     {
-        ArrayList<Piece> xPieces=x.getPieces();
-        ArrayList<Piece> yPieces=y.getPieces();
 
         for(int i=0;i<board.length;i++)
         {
@@ -161,6 +165,7 @@ class Game implements Serializable {
                 { xPieces.get(i).setStrength(1); }
                 xPieces.get(i).setTeam(0);
             }
+
             String temp;
             board[6][0]=yPieces.get(11);
             yPieces.get(11).setLocation(6,0);

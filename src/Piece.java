@@ -12,20 +12,35 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
+    private int idx;
 
 
     public boolean move(Location to,Object[][] board)
     {
-        if(board[to.posX][to.posY].equals("w"))
+        boolean flag;
+        Piece temp=null;
+        int captureCheck=0;
+        if(board[to.posX][to.posY].getClass()!=String.class)
+        {
+            temp=(Piece)board[to.posX][to.posY];
+            captureCheck=1;
+        }
+
+        if(board[to.posX][to.posY].equals("w"))         //water
         {
             System.out.println("Invalid move");
             return false;
-        }else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)
+        }else if(captureCheck==1 && temp.getTeam()!=this.getTeam())
+        {
+            flag=capture(temp,board);
+            return flag;
+        }
+        else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
             board[loc.posX][loc.posY]="O";
             this.symbol=getSymbol();
             board[to.posX][to.posY]=this.symbol;
-        }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)
+        }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             board[loc.posX][loc.posY]="O";
             this.symbol=getSymbol();
@@ -40,12 +55,20 @@ class Piece extends Game {
         return true;
     }
 
-    public void capture(Piece other)
+    public boolean capture(Piece other,Object[][] board)
     {
-        if(this.getTeam()!=other.getTeam() && this.getStrength()>=other.getStrength())
+        if(this.getStrength()>=other.getStrength())
         {
-            //capture;
+                this.symbol=getSymbol();
+                board[loc.posX][loc.posY] ="0";
+                board[other.getLocation().posX][other.getLocation().posY]=this.symbol;
+        }else
+        {
+            System.out.println("Can't capture.");
+            return false;
         }
+
+        return true;
     }
 
     public void setStrength(int stg)

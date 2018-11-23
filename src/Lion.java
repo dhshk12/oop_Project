@@ -22,7 +22,7 @@ class Lion extends Piece {
         this.symbol=letter;
     }
 
-  /*  public Object[][] move(Location to,Object[][] board)
+  /*  public boolean move(Location to,Object[][] board)
     {
             board[loc.posX][loc.posY]="O";
             this.symbol=getSymbol();
