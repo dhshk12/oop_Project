@@ -8,8 +8,8 @@ class Game  {
     private Player y;
     public Object[][] board= new Object[9][7];
     private final Scanner in = new Scanner(System.in);
-    ArrayList<Piece> xPieces;
-    ArrayList<Piece> yPieces;
+    public ArrayList<Piece> xPieces=new ArrayList<>();
+    public ArrayList<Piece> yPieces=new ArrayList<>();
 
     Game() {}
 
@@ -65,15 +65,21 @@ class Game  {
 
     private boolean moveCommand(Player p,String command)
     {
-        ArrayList<Piece> pPieces =p.getPieces();
+        ArrayList<Piece> pPieces=null;
+        if(p.equals(x))
+        {
+            pPieces=xPieces;
+        }else if(p.equals(y))
+        {
+            pPieces=yPieces;
+        }
+
         xEnum x=xEnum.A;
         String from= command.substring(4,6);
         String to=command.substring(6,8);
 
         Piece.Location toLoc= new Piece.Location();
-
         int xTo= x.convert(to.charAt(0));
-
         toLoc.posX=board.length-(Integer.parseInt(to.substring(1)));
         toLoc.posY=xTo;
 
