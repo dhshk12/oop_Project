@@ -70,7 +70,6 @@ class Piece extends Game {
             }
 
 
-
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam())
@@ -81,13 +80,33 @@ class Piece extends Game {
                 return flag;
             }
 
-            if(convertCheck==1 && temp.getClass()==Trap.class) //trap
-            { }
-                Object swap=board[loc.posX][loc.posY];
-                board[loc.posX][loc.posY]= board[to.posX][to.posY];
-                board[to.posX][to.posY]=swap;
+            else if(convertCheck==1 && temp.getClass()==Trap.class) //trap
+            {
+                if(this.getTeam()!=temp.getTeam())
+                {this.setStrength(0);}
+                this.prevTrap=temp;
+                board[to.posX][to.posY]=this;
+                board[loc.posX][loc.posY]="O";
+
                 Piece p=(Piece) board[to.posX][to.posY];
                 p.setLocation(to.posX,to.posY);
+            }else
+            {
+                if(this.prevTrap!=null)
+                {
+                    Object swap=board[loc.posX][loc.posY];
+                    board[loc.posX][loc.posY]= this.prevTrap;
+                    board[to.posX][to.posY]=swap;
+                    Piece p=(Piece) board[to.posX][to.posY];
+                    p.setLocation(to.posX,to.posY);
+                }else {
+                    Object swap = board[loc.posX][loc.posY];
+                    board[loc.posX][loc.posY] = board[to.posX][to.posY];
+                    board[to.posX][to.posY] = swap;
+                    Piece p = (Piece) board[to.posX][to.posY];
+                    p.setLocation(to.posX, to.posY);
+                }
+            }
 
         }else
         {
