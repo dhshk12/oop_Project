@@ -4,6 +4,7 @@ class Leopard extends Piece {
     Leopard()
     {
         this.symbol="l";
+        this.prevObject = null;
     }
 
     public String toString() {
@@ -16,4 +17,8 @@ class Leopard extends Piece {
     public void setSymbol(String letter) {
         this.symbol = letter;
     }
+
+    private Piece prevObject;//holds previous object in current position of piece.
+    public void setPrevObject(Piece obj){this.prevObject = obj;}
+    public Piece getPrevObject(){return this.prevObject;}
 }

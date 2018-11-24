@@ -1,11 +1,14 @@
 class Lion extends Piece {
 
     private String symbol;
+    private Piece prevObject;//holds previous object in current position of piece.
+
     Location loc;
 
     Lion()
     {
         this.symbol="n";
+        this.prevObject = null;
     }
 
     public String toString()
@@ -22,6 +25,9 @@ class Lion extends Piece {
         this.symbol=letter;
     }
 
+
+    public void setPrevObject(Piece obj){this.prevObject = obj;}
+    public Piece getPrevObject(){return this.prevObject;}
   /*  public boolean move(Location to,Object[][] board)
     {
             board[loc.posX][loc.posY]="O";

@@ -3,6 +3,7 @@ class Rat extends Piece {
     private String symbol;
     Rat(){
         this.symbol = "r";
+        this.prevObject = null;
     }
     public String toString()
     {
@@ -17,4 +18,8 @@ class Rat extends Piece {
     {
         this.symbol=letter;
     }
+
+    private Piece prevObject;//holds previous object in current position of piece.
+    public void setPrevObject(Piece obj){this.prevObject = obj;}
+    public Piece getPrevObject(){return this.prevObject;}
 }

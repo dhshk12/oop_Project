@@ -3,6 +3,7 @@ class Cat extends Piece {
     Cat()
     {
         this.symbol = "c";
+        this.prevObject = null;
     }
     public String toString()
     {
@@ -17,4 +18,8 @@ class Cat extends Piece {
     {
         this.symbol=letter;
     }
+
+    private Piece prevObject;//holds previous object in current position of piece.
+    public void setPrevObject(Piece obj){this.prevObject = obj;}
+    public Piece getPrevObject(){return this.prevObject;}
 }

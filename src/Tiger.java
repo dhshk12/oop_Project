@@ -2,6 +2,7 @@ class Tiger extends Piece {
     private String symbol;
     Tiger(){
         this.symbol = "t";
+        this.prevObject = null;
     }
 
     public String toString()
@@ -17,4 +18,8 @@ class Tiger extends Piece {
     {
         this.symbol=letter;
     }
+
+    private Piece prevObject;//holds previous object in current position of piece.
+    public void setPrevObject(Piece obj){this.prevObject = obj;}
+    public Piece getPrevObject(){return this.prevObject;}
 }
