@@ -25,7 +25,6 @@ class Piece extends Game {
             temp=(Piece)board[to.posX][to.posY];
             captureCheck=1;
         }
-
         if(board[to.posX][to.posY].equals("w"))         //water
         {
             System.out.println("Invalid move");
@@ -37,11 +36,23 @@ class Piece extends Game {
         }
         else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
-            board[loc.posX][loc.posY]="O";
+
+            if(this.getTeam()==temp.getTeam())
+            { return false; } //same piece
+            if(temp.getClass()==Trap.class && temp.getTeam()!=this.getTeam())
+            { this.setStrength(0); }
+
+            board[loc.posX][loc.posY]=symbol;
             this.symbol=getSymbol();
             board[to.posX][to.posY]=this.symbol;
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
+            if(this.getTeam()==temp.getTeam())
+            { return false; } //same piece
+
+            if(temp.getClass()==Trap.class)
+            {this.setStrength(0);}
+
             board[loc.posX][loc.posY]="O";
             this.symbol=getSymbol();
             board[to.posX][to.posY]=this.symbol;
@@ -62,6 +73,7 @@ class Piece extends Game {
                 this.symbol=getSymbol();
                 board[loc.posX][loc.posY] ="0";
                 board[other.getLocation().posX][other.getLocation().posY]=this.symbol;
+                //removing
         }else
         {
             System.out.println("Can't capture.");

@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import java.io.Serializable;
-
-class Game implements Serializable {
+class Game  {
 
     private static final long serialVersionUID = 1L;
     private Player x;
@@ -21,12 +19,11 @@ class Game implements Serializable {
         this.y=y;
         xPieces=x.getPieces();
         yPieces=y.getPieces();
+        initializeBoard();
     }
 
     public void start()
     {
-        initializeBoard();
-
         System.out.println("Enter Player 1's name:");
         x.setName(in.next());
         System.out.println("Enter Player 2's name:");
@@ -56,8 +53,6 @@ class Game implements Serializable {
         printBoard();
     }
 
-
-
     private boolean moveCommand(Player p,String command)
     {
         ArrayList<Piece> pPieces =p.getPieces();
@@ -83,7 +78,6 @@ class Game implements Serializable {
                 break;
             }
         }
-
         if(status==false)
         { System.out.print("Invalid move "); }
 
@@ -102,7 +96,6 @@ class Game implements Serializable {
 
     private void initializeBoard()
     {
-
         for(int i=0;i<board.length;i++)
         {
             for(int j=0;j<board[i].length;j++)
@@ -251,5 +244,7 @@ class Game implements Serializable {
         }
 
     }
+
+
 
 }

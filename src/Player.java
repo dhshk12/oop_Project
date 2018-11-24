@@ -6,7 +6,6 @@ class Player extends Game {
     private final ArrayList<Piece> pieces= new ArrayList<>();
 
     public Player() {
-        pieces.clear();
         initializePieces();
     }
 
@@ -45,7 +44,6 @@ class Player extends Game {
     {
         return this.pieces;
     }
-
 
 
 
