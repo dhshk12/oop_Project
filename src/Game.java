@@ -11,6 +11,7 @@ class Game  {
     public ArrayList<Piece> xPieces=new ArrayList<>();
     public ArrayList<Piece> yPieces=new ArrayList<>();
 
+
     Game() {}
 
     public Game(Player x, Player y)
@@ -31,7 +32,7 @@ class Game  {
         printBoard();
         boolean status=false;
 
-        while(!endGame()==false) {
+        while(true) {
             while (status == false) {
                 String command1;
                 System.out.print(x.getName() + ", enter your command: ");
@@ -58,10 +59,7 @@ class Game  {
     }
 
 
-    private boolean endGame()
-    {
-        return true;
-    }
+
 
     private boolean moveCommand(Player p,String command)
     {
@@ -176,6 +174,7 @@ class Game  {
             }
 
             String temp;
+
             board[6][0]=yPieces.get(11);
             yPieces.get(11).setLocation(6,0);
             temp=yPieces.get(11).getSymbol();

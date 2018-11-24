@@ -7,9 +7,8 @@ class Leopard extends Piece {
     }
 
     public String toString() {
-        return "l";
+        return symbol;
     }
-
     public String getSymbol() {
         return this.symbol;
     }

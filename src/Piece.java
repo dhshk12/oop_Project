@@ -15,6 +15,7 @@ class Piece extends Game {
     private String symbol;
 
 
+
     public boolean move(Location to,Object[][] board)
     {
         boolean flag;
@@ -41,8 +42,10 @@ class Piece extends Game {
             if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
             if(convertCheck==1 && temp.getClass()==Trap.class && temp.getTeam()!=this.getTeam())
-            { checkTrap(board);
+            { this.setStrength(0);
+              System.out.println(this.getStrength());
             }
+
             Object swap=board[loc.posX][loc.posY];
             board[loc.posX][loc.posY]= board[to.posX][to.posY];
             board[to.posX][to.posY]=swap;
@@ -62,11 +65,10 @@ class Piece extends Game {
                 Object swap=board[loc.posX][loc.posY];
                 board[loc.posX][loc.posY]= board[to.posX][to.posY];
                 board[to.posX][to.posY]=swap;
-                Piece p=(Piece) board[to.posX][to.posY];
+                Piece p=(Piece)board[to.posX][to.posY];
                 p.setLocation(to.posX,to.posY);
 
-        }
-        else
+        } else
         {
             System.out.println("Invalid move");
             return false;
@@ -75,25 +77,30 @@ class Piece extends Game {
         return true;
     }
 
-    public void checkTrap(Object[][] board)
-    {
-        this.setStrength(0);
-    }
+
 
     public boolean capture(Piece other,Object[][] board)
     {
-        if(this.getStrength()>=other.getStrength())
+        if(other.getClass()==King.class || other.getClass()==Trap.class)
         {
-                this.symbol=getSymbol();
-                board[loc.posX][loc.posY] ="0";
-                board[other.getLocation().posX][other.getLocation().posY]=this.symbol;
+            System.out.println("Invalid move");
+            return false;
+        }
+       if(this.getStrength()>=other.getStrength())
+        {
+
+            Object swap=board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY]= board[other.getLocation().posX][other.getLocation().posY];
+            board[other.getLocation().posX][other.getLocation().posY]=swap;
+            Piece p=(Piece)board[other.getLocation().posX][other.getLocation().posY];
+            p.setLocation(other.getLocation().posX,other.getLocation().posY);
                 if(other.getTeam()==0)
                 {
                 }else if(other.getTeam()==1)
                 {
 
                 }
-        }else
+        } else
         {
             System.out.println("Can't capture.");
             return false;
