@@ -60,6 +60,8 @@ class Piece extends Game {
                     board[to.posX][to.posY]=swap;
                     Piece p=(Piece) board[to.posX][to.posY];
                     p.setLocation(to.posX,to.posY);
+
+                    this.prevObject = null;
                 }else {
                     Object swap = board[loc.posX][loc.posY];
                     board[loc.posX][loc.posY] = board[to.posX][to.posY];
@@ -99,6 +101,8 @@ class Piece extends Game {
                     board[to.posX][to.posY]=swap;
                     Piece p=(Piece) board[to.posX][to.posY];
                     p.setLocation(to.posX,to.posY);
+
+                    this.prevObject = null;
                 }else {
                     Object swap = board[loc.posX][loc.posY];
                     board[loc.posX][loc.posY] = board[to.posX][to.posY];
