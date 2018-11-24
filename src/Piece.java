@@ -118,7 +118,7 @@ class Piece extends Game {
             board[loc.posX][loc.posY]= board[other.getLocation().posX][other.getLocation().posY];
             board[other.getLocation().posX][other.getLocation().posY]=swap;
             Piece p=(Piece)board[other.getLocation().posX][other.getLocation().posY];
-            p.setLocation(other.getLocation().posX,other.getLocation().posY);
+            p.setLocation(other.getLocation().posX,other.getLocation().posY); //hhhj
                 if(other.getTeam()==0)
                 {
 
