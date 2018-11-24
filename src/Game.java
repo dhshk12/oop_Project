@@ -29,29 +29,33 @@ class Game  {
         System.out.println("Enter Player 2's name:");
         y.setName(in.next());
         printBoard();
-
         boolean status=false;
-        while(status==false) {
-            String command1;
-            System.out.print(x.getName() + ", enter your command: ");
-            command1 = in.next();
 
-            if (command1.substring(0, 4).equals("move")) {
-                status=moveCommand(x, command1);
+        while(true) {
+            while (status == false) {
+                String command1;
+                System.out.print(x.getName() + ", enter your command: ");
+                command1 = in.next();
+
+                if (command1.substring(0, 4).equals("move")) {
+                    status = moveCommand(x, command1);
+                }
             }
-        }
-        printBoard();
-        status=false;
-        while(status==false) {
-            String command2;
-            System.out.print(y.getName() + ", enter your command: ");
-            command2 = in.next();
-            if (command2.substring(0, 4).equals("move")) {
-                status=moveCommand(y, command2);
+            printBoard();
+            status = false;
+            while (status == false) {
+                String command2;
+                System.out.print(y.getName() + ", enter your command: ");
+                command2 = in.next();
+                if (command2.substring(0, 4).equals("move")) {
+                    status = moveCommand(y, command2);
+                }
             }
+            printBoard();
+            status = false;
         }
-        printBoard();
     }
+
 
     private boolean moveCommand(Player p,String command)
     {

@@ -19,38 +19,41 @@ class Piece extends Game {
     {
         boolean flag;
         Piece temp=null;
-        int captureCheck=0;
+        int convertCheck=0;
+
         if(board[to.posX][to.posY].getClass()!=String.class)
         {
             temp=(Piece)board[to.posX][to.posY];
-            captureCheck=1;
+            convertCheck=1;
         }
+
         if(board[to.posX][to.posY].equals("w"))         //water
         {
             System.out.println("Invalid move");
             return false;
-        }else if(captureCheck==1 && temp.getTeam()!=this.getTeam())
+        }else if(convertCheck==1 && temp.getTeam()!=this.getTeam())
         {
             flag=capture(temp,board);
             return flag;
         }
         else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
-
-            if(this.getTeam()==temp.getTeam())
+            if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
-            if(temp.getClass()==Trap.class && temp.getTeam()!=this.getTeam())
-            { this.setStrength(0); }
+            if(convertCheck==1 && temp.getClass()==Trap.class && temp.getTeam()!=this.getTeam())
+            { this.setStrength(0);
+              System.out.println(this.getStrength());
+            }
 
-            board[loc.posX][loc.posY]=symbol;
+            board[loc.posX][loc.posY]="O";
             this.symbol=getSymbol();
             board[to.posX][to.posY]=this.symbol;
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
-            if(this.getTeam()==temp.getTeam())
+            if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
 
-            if(temp.getClass()==Trap.class)
+            if(convertCheck==1 && temp.getClass()==Trap.class)
             {this.setStrength(0);}
 
             board[loc.posX][loc.posY]="O";
