@@ -37,7 +37,7 @@ class Piece extends Game {
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam() &&temp.getClass()!=Trap.class)
             { return false; } //same piece
-            else if(convertCheck==1 && temp.getTeam()!=this.getTeam())
+            else if(convertCheck==1 && temp.getTeam()!=this.getTeam()&&temp.getClass()!=Trap.class)
             {
                 flag=capture(temp,board);
                 return flag;
@@ -74,7 +74,7 @@ class Piece extends Game {
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
-            if(convertCheck==1 && temp.getTeam()!=this.getTeam())
+            if(convertCheck==1 && temp.getTeam()!=this.getTeam()&&temp.getClass()!=Trap.class)
             {
                 flag=capture(temp,board);
                 return flag;
