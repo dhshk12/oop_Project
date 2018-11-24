@@ -13,7 +13,7 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
-    private Object prevTrap;
+    private Object prevObject;
 
 
 
@@ -45,7 +45,7 @@ class Piece extends Game {
             {
                 if(this.getTeam()!=temp.getTeam())
                 {this.setStrength(0);}
-                this.prevTrap=temp;
+                this.prevObject=temp;
                 board[to.posX][to.posY]=this;
                 board[loc.posX][loc.posY]="O";
 
@@ -53,10 +53,10 @@ class Piece extends Game {
                 p.setLocation(to.posX,to.posY);
             }else
             {
-                if(this.prevTrap!=null)
+                if(this.prevObject!=null)
                 {
                     Object swap=board[loc.posX][loc.posY];
-                    board[loc.posX][loc.posY]= this.prevTrap;
+                    board[loc.posX][loc.posY]= this.prevObject;
                     board[to.posX][to.posY]=swap;
                     Piece p=(Piece) board[to.posX][to.posY];
                     p.setLocation(to.posX,to.posY);
@@ -84,7 +84,7 @@ class Piece extends Game {
             {
                 if(this.getTeam()!=temp.getTeam())
                 {this.setStrength(0);}
-                this.prevTrap=temp;
+                this.prevObject=temp;
                 board[to.posX][to.posY]=this;
                 board[loc.posX][loc.posY]="O";
 
@@ -92,10 +92,10 @@ class Piece extends Game {
                 p.setLocation(to.posX,to.posY);
             }else
             {
-                if(this.prevTrap!=null)
+                if(this.prevObject!=null)
                 {
                     Object swap=board[loc.posX][loc.posY];
-                    board[loc.posX][loc.posY]= this.prevTrap;
+                    board[loc.posX][loc.posY]= this.prevObject;
                     board[to.posX][to.posY]=swap;
                     Piece p=(Piece) board[to.posX][to.posY];
                     p.setLocation(to.posX,to.posY);
