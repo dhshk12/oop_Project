@@ -12,7 +12,6 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
-    private int idx;
 
 
     public boolean move(Location to,Object[][] board)
@@ -44,21 +43,29 @@ class Piece extends Game {
             { this.setStrength(0);
               System.out.println(this.getStrength());
             }
+            Object swap=board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY]= board[to.posX][to.posY];
+            board[to.posX][to.posY]=swap;
+            Piece p=(Piece) board[to.posX][to.posY];
+            p.setLocation(to.posX,to.posY);
 
-            board[loc.posX][loc.posY]="O";
-            this.symbol=getSymbol();
-            board[to.posX][to.posY]=this.symbol;
+
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
 
-            if(convertCheck==1 && temp.getClass()==Trap.class)
-            {this.setStrength(0);}
+            if(convertCheck==1 && temp.getClass().equals(Trap.class))
+            {this.setStrength(0);
+            System.out.println(this.getStrength());
+            }
+            
+            Object swap=board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY]= board[to.posX][to.posY];
+            board[to.posX][to.posY]=swap;
+            Piece p=(Piece) board[to.posX][to.posY];
+            p.setLocation(to.posX,to.posY);
 
-            board[loc.posX][loc.posY]="O";
-            this.symbol=getSymbol();
-            board[to.posX][to.posY]=this.symbol;
         }
         else
         {

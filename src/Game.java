@@ -31,7 +31,7 @@ class Game  {
         printBoard();
         boolean status=false;
 
-        while(true) {
+        while(!endGame()==false) {
             while (status == false) {
                 String command1;
                 System.out.print(x.getName() + ", enter your command: ");
@@ -43,6 +43,7 @@ class Game  {
             }
             printBoard();
             status = false;
+
             while (status == false) {
                 String command2;
                 System.out.print(y.getName() + ", enter your command: ");
@@ -56,6 +57,11 @@ class Game  {
         }
     }
 
+
+    private boolean endGame()
+    {
+        return true;
+    }
 
     private boolean moveCommand(Player p,String command)
     {
