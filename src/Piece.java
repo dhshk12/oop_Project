@@ -31,7 +31,7 @@ class Piece extends Game {
             System.out.println("Invalid move");
             return false;
         }
-        else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  // moving horizontally
+        else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam() &&temp.getClass()!=Trap.class)
             { return false; } //same piece
@@ -66,7 +66,7 @@ class Piece extends Game {
                 p.setLocation(to.posX, to.posY);
 
             }
-        }else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  //moving vertically
+        }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam()&&temp.getClass()!=Trap.class)
             { return false; } //same piece
@@ -118,7 +118,7 @@ class Piece extends Game {
             board[loc.posX][loc.posY]= board[other.getLocation().posX][other.getLocation().posY];
             board[other.getLocation().posX][other.getLocation().posY]=swap;
             Piece p=(Piece)board[other.getLocation().posX][other.getLocation().posY];
-            p.setLocation(other.getLocation().posX,other.getLocation().posY); //hhhj
+            p.setLocation(other.getLocation().posX,other.getLocation().posY);
                 if(other.getTeam()==0)
                 {
 
