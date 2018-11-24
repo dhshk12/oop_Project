@@ -28,8 +28,8 @@ class Lion extends Piece {
             this.symbol=getSymbol();
             board[to.posX][to.posY]=this.symbol;
 
-        return board;
-    }
-    */
+        return true;
+    }*/
+
 
 }

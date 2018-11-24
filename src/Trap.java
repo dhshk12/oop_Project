@@ -1,5 +1,7 @@
 class Trap extends Piece {
     private String symbol;
+    Trap clone;
+
     Trap(){
         this.symbol = "x";
     }
@@ -17,4 +19,7 @@ class Trap extends Piece {
     {
         this.symbol=letter;
     }
+
+
+
 }

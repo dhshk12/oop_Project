@@ -13,6 +13,7 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
+    private Object prevObject="O";
 
 
     public boolean move(Location to,Object[][] board)
@@ -20,18 +21,17 @@ class Piece extends Game {
         boolean flag;
         Piece temp=null;
         int convertCheck=0;
-
         if(board[to.posX][to.posY].getClass()!=String.class)
         {
             temp=(Piece)board[to.posX][to.posY];
             convertCheck=1;
         }
-
         if(board[to.posX][to.posY].equals("w"))         //water
         {
             System.out.println("Invalid move");
             return false;
-        } else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
+        }
+        else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam() &&temp.getClass()!=Trap.class)
             { return false; } //same piece
@@ -39,12 +39,33 @@ class Piece extends Game {
             {
                 flag=capture(temp,board);
                 return flag;
+            }/*else if(convertCheck==1 && temp.getClass()==Trap.class)
+            {
+                this.prevObject=temp;
+                board[to.posX][to.posY]=board[loc.posX][loc.posY];
+                board[loc.posX][loc.posY]="O";
+            }*/
+            if(convertCheck==0) {
+                Object swap = board[loc.posX][loc.posY];
+                //this.prevObject = "0";
+                board[to.posX][to.posY] = swap;
+                board[loc.posX][loc.posY] = this.prevObject;
+                Piece p = (Piece)board[to.posX][to.posY];
+                p.setLocation(to.posX, to.posY);
+            }else if(convertCheck==1)
+            {
+                Object swap = board[loc.posX][loc.posY];
+                board[loc.posX][loc.posY]= this.prevObject;
+                //this.prevObject = "0";
+                if (temp.getClass() == Trap.class) {
+                    this.prevObject = temp;
+                }
+                board[to.posX][to.posY] = swap;
+                board[loc.posX][loc.posY]="O";
+                Piece p = (Piece)board[to.posX][to.posY];
+                p.setLocation(to.posX, to.posY);
+
             }
-            Object swap = board[loc.posX][loc.posY];
-            board[loc.posX][loc.posY] = board[to.posX][to.posY];
-            board[to.posX][to.posY] = swap;
-            Piece p = (Piece) board[to.posX][to.posY];
-            p.setLocation(to.posX, to.posY);
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam()&&temp.getClass()!=Trap.class)
@@ -54,11 +75,30 @@ class Piece extends Game {
                 flag=capture(temp,board);
                 return flag;
             }
-            Object swap = board[loc.posX][loc.posY];
-            board[loc.posX][loc.posY] = board[to.posX][to.posY];
-            board[to.posX][to.posY] = swap;
-            Piece p = (Piece) board[to.posX][to.posY];
-            p.setLocation(to.posX, to.posY);
+
+            // when the next location is a string
+            if(convertCheck==0) {
+                Object swap = board[loc.posX][loc.posY];
+                this.prevObject = "0";
+                board[to.posX][to.posY] = swap;
+                board[loc.posX][loc.posY] = this.prevObject;
+                Piece p = (Piece)board[to.posX][to.posY];
+                p.setLocation(to.posX, to.posY);
+            }
+                //when the next location has an object
+            else if(convertCheck==1)
+            {
+                Object swap = board[loc.posX][loc.posY];
+                this.prevObject = "0";
+                if (temp.getClass() == Trap.class) {
+                    this.prevObject = temp;
+                }
+                board[to.posX][to.posY] = swap;
+                board[loc.posX][loc.posY] = this.prevObject;
+                Piece p = (Piece)board[to.posX][to.posY];
+                p.setLocation(to.posX, to.posY);
+
+            }
         }else
         {
             System.out.println("Invalid move");
