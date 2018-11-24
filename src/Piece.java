@@ -32,15 +32,15 @@ class Piece extends Game {
         {
             System.out.println("Invalid move");
             return false;
-        }else if(convertCheck==1 && temp.getTeam()!=this.getTeam())
-        {
-            flag=capture(temp,board);
-            return flag;
-        }
-        else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
+        } else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
+            if(convertCheck==1 && temp.getTeam()!=this.getTeam())
+            {
+                flag=capture(temp,board);
+                return flag;
+            }
             if(convertCheck==1 && temp.getClass()==Trap.class && temp.getTeam()!=this.getTeam())
             { this.setStrength(0);
               System.out.println(this.getStrength());
@@ -52,11 +52,15 @@ class Piece extends Game {
             Piece p=(Piece) board[to.posX][to.posY];
             p.setLocation(to.posX,to.posY);
 
-
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam())
             { return false; } //same piece
+            if(convertCheck==1 && temp.getTeam()!=this.getTeam())
+            {
+                flag=capture(temp,board);
+                return flag;
+            }
 
             if(convertCheck==1 && temp.getClass()==Trap.class)
             {
@@ -81,11 +85,7 @@ class Piece extends Game {
 
     public boolean capture(Piece other,Object[][] board)
     {
-        if(other.getClass()==King.class || other.getClass()==Trap.class)
-        {
-            System.out.println("Invalid move");
-            return false;
-        }
+
        if(this.getStrength()>=other.getStrength())
         {
 
