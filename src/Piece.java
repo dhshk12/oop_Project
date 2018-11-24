@@ -13,6 +13,7 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
+    private String 
 
 
 
@@ -41,9 +42,15 @@ class Piece extends Game {
                 flag=capture(temp,board);
                 return flag;
             }
-            if(convertCheck==1 && temp.getClass()==Trap.class && temp.getTeam()!=this.getTeam())
-            { this.setStrength(0);
-              System.out.println(this.getStrength());
+            if(convertCheck==1 && temp.getClass()==Trap.class) //trap
+            {
+                if( temp.getTeam()!=this.getTeam())
+                {
+                    this.setStrength(0);
+                }
+
+
+
             }
 
             Object swap=board[loc.posX][loc.posY];
@@ -85,10 +92,8 @@ class Piece extends Game {
 
     public boolean capture(Piece other,Object[][] board)
     {
-
        if(this.getStrength()>=other.getStrength())
         {
-
             Object swap=board[loc.posX][loc.posY];
             board[loc.posX][loc.posY]= board[other.getLocation().posX][other.getLocation().posY];
             board[other.getLocation().posX][other.getLocation().posY]=swap;
