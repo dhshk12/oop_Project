@@ -13,8 +13,6 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
-    private Object prevObject;
-
 
 
     public boolean move(Location to,Object[][] board)
@@ -41,77 +39,26 @@ class Piece extends Game {
             {
                 flag=capture(temp,board);
                 return flag;
-            }else if(convertCheck==1 && temp.getClass()==Trap.class) //trap
-            {
-                if(this.getTeam()!=temp.getTeam())
-                {this.setStrength(0);}
-                this.prevObject=temp;
-                board[to.posX][to.posY]=this;
-                board[loc.posX][loc.posY]="O";
-
-                Piece p=(Piece) board[to.posX][to.posY];
-                p.setLocation(to.posX,to.posY);
-            }else
-            {
-                if(this.prevObject!=null)
-                {
-                    Object swap=board[loc.posX][loc.posY];
-                    board[loc.posX][loc.posY]= this.prevObject;
-                    board[to.posX][to.posY]=swap;
-                    Piece p=(Piece) board[to.posX][to.posY];
-                    p.setLocation(to.posX,to.posY);
-
-                    this.prevObject = null;
-                }else {
-                    Object swap = board[loc.posX][loc.posY];
-                    board[loc.posX][loc.posY] = board[to.posX][to.posY];
-                    board[to.posX][to.posY] = swap;
-                    Piece p = (Piece) board[to.posX][to.posY];
-                    p.setLocation(to.posX, to.posY);
-                }
             }
-
-
+            Object swap = board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY] = board[to.posX][to.posY];
+            board[to.posX][to.posY] = swap;
+            Piece p = (Piece) board[to.posX][to.posY];
+            p.setLocation(to.posX, to.posY);
         }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
-            if(convertCheck==1 && this.getTeam()==temp.getTeam())
+            if(convertCheck==1 && this.getTeam()==temp.getTeam()&&temp.getClass()!=Trap.class)
             { return false; } //same piece
             if(convertCheck==1 && temp.getTeam()!=this.getTeam()&&temp.getClass()!=Trap.class)
             {
                 flag=capture(temp,board);
                 return flag;
             }
-
-            else if(convertCheck==1 && temp.getClass()==Trap.class) //trap
-            {
-                if(this.getTeam()!=temp.getTeam())
-                {this.setStrength(0);}
-                this.prevObject=temp;
-                board[to.posX][to.posY]=this;
-                board[loc.posX][loc.posY]="O";
-
-                Piece p=(Piece) board[to.posX][to.posY];
-                p.setLocation(to.posX,to.posY);
-            }else
-            {
-                if(this.prevObject!=null)
-                {
-                    Object swap=board[loc.posX][loc.posY];
-                    board[loc.posX][loc.posY]= this.prevObject;
-                    board[to.posX][to.posY]=swap;
-                    Piece p=(Piece) board[to.posX][to.posY];
-                    p.setLocation(to.posX,to.posY);
-
-                    this.prevObject = null;
-                }else {
-                    Object swap = board[loc.posX][loc.posY];
-                    board[loc.posX][loc.posY] = board[to.posX][to.posY];
-                    board[to.posX][to.posY] = swap;
-                    Piece p = (Piece) board[to.posX][to.posY];
-                    p.setLocation(to.posX, to.posY);
-                }
-            }
-
+            Object swap = board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY] = board[to.posX][to.posY];
+            board[to.posX][to.posY] = swap;
+            Piece p = (Piece) board[to.posX][to.posY];
+            p.setLocation(to.posX, to.posY);
         }else
         {
             System.out.println("Invalid move");
@@ -134,6 +81,7 @@ class Piece extends Game {
             p.setLocation(other.getLocation().posX,other.getLocation().posY);
                 if(other.getTeam()==0)
                 {
+
                 }else if(other.getTeam()==1)
                 {
 
