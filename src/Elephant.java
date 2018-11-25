@@ -2,7 +2,6 @@ class Elephant extends Piece {
    private String symbol;
    Elephant(){
       this.symbol = "e";
-      this.prevObject = null;
    }
     public String toString()
     {
@@ -18,9 +17,6 @@ class Elephant extends Piece {
         this.symbol=letter;
     }
 
-    private Piece prevObject;//holds previous object in current position of piece.
-    public void setPrevObject(Piece obj){this.prevObject = obj;}
-    public Piece getPrevObject(){return this.prevObject;}
 
 
 }
