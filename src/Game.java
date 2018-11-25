@@ -58,9 +58,6 @@ class Game  {
         }
     }
 
-
-
-
     private boolean moveCommand(Player p,String command)
     {
         ArrayList<Piece> pPieces=p.getPieces();
