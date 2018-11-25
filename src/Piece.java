@@ -41,6 +41,8 @@ class Piece extends Game {
                     return flag;
                 } else if(convertCheck==1&& temp.getClass()==Trap.class)
                 {
+                    if(this.getTeam() != temp.getTeam())
+                        this.setStrength(0);
                     temp.setLocation(loc.posX,loc.posY);
                     store[0]=temp;
 
@@ -71,6 +73,8 @@ class Piece extends Game {
                 return flag;
             }else if(convertCheck==1&& temp.getClass()==Trap.class)
             {
+                if(this.getTeam() != temp.getTeam())
+                    this.setStrength(0);
                 temp.setLocation(loc.posX,loc.posY);
                 store[0]=temp;
 
@@ -106,10 +110,22 @@ class Piece extends Game {
        if(this.getStrength()>=other.getStrength())
         {
             Object swap=board[loc.posX][loc.posY];
-            board[loc.posX][loc.posY]= board[other.getLocation().posX][other.getLocation().posY];
+            other.setSymbol("0");
+
+            board[loc.posX][loc.posY]= other;
             board[other.getLocation().posX][other.getLocation().posY]=swap;
+
+            if (other.getClass()==Trap.class)
+            {
+
+                other.setLocation(loc.posX,loc.posY);
+                store[0]=other;
+
+            }
             Piece p=(Piece)board[other.getLocation().posX][other.getLocation().posY];
             p.setLocation(other.getLocation().posX,other.getLocation().posY);
+
+
                 if(other.getTeam()==0)
                 {
                 }else if(other.getTeam()==1)
