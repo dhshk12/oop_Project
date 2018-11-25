@@ -1,3 +1,4 @@
+import java.util.List;
 
 class Piece extends Game {
 
@@ -5,7 +6,6 @@ class Piece extends Game {
     {
         int posX;
         int posY;
-
         Location(){}
     }
 
@@ -13,7 +13,7 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
-    private Object prevObject="O";
+    private Object[] store=new Object[1];
 
 
     public boolean move(Location to,Object[][] board)
@@ -33,40 +33,35 @@ class Piece extends Game {
         }
         else if(to.posX==loc.posX && Math.abs(to.posY-loc.posY)==1)  // moving horizontally
         {
-            if(convertCheck==1 && this.getTeam()==temp.getTeam() &&temp.getClass()!=Trap.class)
-            { return false; } //same piece
-            else if(convertCheck==1 && temp.getTeam()!=this.getTeam()&&temp.getClass()!=Trap.class)
-            {
-                flag=capture(temp,board);
-                return flag;
-            }/*else if(convertCheck==1 && temp.getClass()==Trap.class)
-            {
-                this.prevObject=temp;
-                board[to.posX][to.posY]=board[loc.posX][loc.posY];
-                board[loc.posX][loc.posY]="O";
-            }*/
-            if(convertCheck==0) {
-                Object swap = board[loc.posX][loc.posY];
-                //this.prevObject = "0";
-                board[to.posX][to.posY] = swap;
-                board[loc.posX][loc.posY] = this.prevObject;
-                Piece p = (Piece)board[to.posX][to.posY];
-                p.setLocation(to.posX, to.posY);
-            }else if(convertCheck==1)
-            {
-                Object swap = board[loc.posX][loc.posY];
-                board[loc.posX][loc.posY]= this.prevObject;
-                //this.prevObject = "0";
-                if (temp.getClass() == Trap.class) {
-                    this.prevObject = temp;
-                }
-                board[to.posX][to.posY] = swap;
-                board[loc.posX][loc.posY]="O";
-                Piece p = (Piece)board[to.posX][to.posY];
-                p.setLocation(to.posX, to.posY);
+                if (convertCheck==1&&this.getTeam() == temp.getTeam() && temp.getClass() != Trap.class) {
+                    return false;
+                } //same piece
+                else if (convertCheck==1&& temp.getTeam() != this.getTeam() && temp.getClass() != Trap.class) {
+                    flag = capture(temp, board);
+                    return flag;
+                } else if(convertCheck==1&& temp.getClass()==Trap.class)
+                {
+                    temp.setLocation(loc.posX,loc.posY);
+                    store[0]=temp;
 
-            }
-        }else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
+                }else if(store[0]!=null)
+                {
+                    Object swap = board[loc.posX][loc.posY];
+                    board[loc.posX][loc.posY] = store[0];
+                    store[0]=null;
+                    board[to.posX][to.posY] = swap;
+                    Piece p = (Piece) board[to.posX][to.posY];
+                    p.setLocation(to.posX, to.posY);
+                    System.out.println(p.store[0]);
+                }
+
+            Object swap = board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY] = "0";
+            board[to.posX][to.posY] = swap;
+            Piece p = (Piece) board[to.posX][to.posY];
+            p.setLocation(to.posX, to.posY);
+        }
+        else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam()&&temp.getClass()!=Trap.class)
             { return false; } //same piece
@@ -74,39 +69,35 @@ class Piece extends Game {
             {
                 flag=capture(temp,board);
                 return flag;
-            }
+            }else if(convertCheck==1&& temp.getClass()==Trap.class)
+            {
+                temp.setLocation(loc.posX,loc.posY);
+                store[0]=temp;
 
-            // when the next location is a string
-            if(convertCheck==0) {
-                Object swap = board[loc.posX][loc.posY];
-                this.prevObject = "0";
-                board[to.posX][to.posY] = swap;
-                board[loc.posX][loc.posY] = this.prevObject;
-                Piece p = (Piece)board[to.posX][to.posY];
-                p.setLocation(to.posX, to.posY);
-            }
-                //when the next location has an object
-            else if(convertCheck==1)
+            }else if(store[0]!=null)
             {
                 Object swap = board[loc.posX][loc.posY];
-                this.prevObject = "0";
-                if (temp.getClass() == Trap.class) {
-                    this.prevObject = temp;
-                }
+                board[loc.posX][loc.posY] = store[0];
+                store[0]=null;
                 board[to.posX][to.posY] = swap;
-                board[loc.posX][loc.posY] = this.prevObject;
-                Piece p = (Piece)board[to.posX][to.posY];
+                Piece p = (Piece) board[to.posX][to.posY];
                 p.setLocation(to.posX, to.posY);
-
             }
+            Object swap = board[loc.posX][loc.posY];
+            board[loc.posX][loc.posY] = "0";
+            board[to.posX][to.posY] = swap;
+            Piece p = (Piece) board[to.posX][to.posY];
+            p.setLocation(to.posX, to.posY);
         }else
         {
             System.out.println("Invalid move");
             return false;
         }
 
+
         return true;
     }
+
 
 
 
@@ -121,10 +112,8 @@ class Piece extends Game {
             p.setLocation(other.getLocation().posX,other.getLocation().posY);
                 if(other.getTeam()==0)
                 {
-
                 }else if(other.getTeam()==1)
                 {
-
                 }
         } else
         {
@@ -175,7 +164,6 @@ class Piece extends Game {
     {
         this.symbol=letter;
     }
-
 
 
 

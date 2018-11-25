@@ -19,6 +19,6 @@ class Leopard extends Piece {
     }
 
     private Piece prevObject;//holds previous object in current position of piece.
-    public void setPrevObject(Piece obj){this.prevObject = obj;}
-    public Piece getPrevObject(){return this.prevObject;}
+
+
 }

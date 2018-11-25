@@ -63,14 +63,7 @@ class Game  {
 
     private boolean moveCommand(Player p,String command)
     {
-        ArrayList<Piece> pPieces=null;
-        if(p.equals(x))
-        {
-            pPieces=xPieces;
-        }else if(p.equals(y))
-        {
-            pPieces=yPieces;
-        }
+        ArrayList<Piece> pPieces=p.getPieces();
 
         xEnum x=xEnum.A;
         String from= command.substring(4,6);
@@ -171,6 +164,7 @@ class Game  {
                 else if(xPieces.get(i).getClass()==Rat.class)
                 { xPieces.get(i).setStrength(1); }
                 xPieces.get(i).setTeam(0);
+
             }
 
             String temp;
