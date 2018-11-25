@@ -15,10 +15,10 @@ class Piece extends Game {
     private String symbol;
     private Object[] store=new Object[1];
 
+
     public Object returnStore(){
         return this.store[0];
     }
-
     public boolean move(Location to,Object[][] board)
     {
         boolean flag;
@@ -57,7 +57,7 @@ class Piece extends Game {
                 board[to.posX][to.posY] = swap;
                 Piece p = (Piece) board[to.posX][to.posY];
                 p.setLocation(to.posX, to.posY);
-                System.out.println(p.returnStore());
+                System.out.println(p.store[0]);
             }
 
             Object swap = board[loc.posX][loc.posY];

@@ -67,7 +67,7 @@ class Rat extends Piece {
                 board[to.posX][to.posY] = swap;
                 Piece p = (Piece) board[to.posX][to.posY];
                 p.setLocation(to.posX, to.posY);
-                System.out.println(p.store[0]);
+                //System.out.println(p.store[0]);
             }
 
             Object swap = board[loc.posX][loc.posY];
