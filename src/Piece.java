@@ -119,13 +119,13 @@ class Piece extends Game {
             board[other.getLocation().posX][other.getLocation().posY]=swap;
             Piece p=(Piece)board[other.getLocation().posX][other.getLocation().posY];
             p.setLocation(other.getLocation().posX,other.getLocation().posY);
-                if(other.getTeam()==0)
+                /*if(other.getTeam()==0)
                 {
 
                 }else if(other.getTeam()==1)
                 {
 
-                }
+                }*/
         } else
         {
             System.out.println("Can't capture.");
