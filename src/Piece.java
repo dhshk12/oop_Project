@@ -13,7 +13,7 @@ class Piece extends Game {
     private int strength ;
     private int team;
     private String symbol;
-    private Object[] store=new Object[1];
+    public Object[] store=new Object[1];
 
 
     public boolean move(Location to,Object[][] board)
@@ -41,6 +41,10 @@ class Piece extends Game {
                     return flag;
                 } else if(convertCheck==1&& temp.getClass()==Trap.class)
                 {
+                    if(this.getTeam()!=temp.getTeam())
+                    {
+                        this.setStrength(0);
+                    }
                     temp.setLocation(loc.posX,loc.posY);
                     store[0]=temp;
 
@@ -71,6 +75,10 @@ class Piece extends Game {
                 return flag;
             }else if(convertCheck==1&& temp.getClass()==Trap.class)
             {
+                if(this.getTeam()!=temp.getTeam())
+                {
+                    this.setStrength(0);
+                }
                 temp.setLocation(loc.posX,loc.posY);
                 store[0]=temp;
 
@@ -97,9 +105,6 @@ class Piece extends Game {
 
         return true;
     }
-
-
-
 
     public boolean capture(Piece other,Object[][] board)
     {
