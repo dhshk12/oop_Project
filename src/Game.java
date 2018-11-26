@@ -65,8 +65,6 @@ class Game implements Serializable {
 
     private boolean moveCommand(Player p,String command)
     {
-
-
         ArrayList<Piece> pPieces=p.getPieces();
         xEnum x=xEnum.A;
         String from= command.substring(4,6);
@@ -110,15 +108,15 @@ class Game implements Serializable {
         {
             for(int j=0;j<board[i].length;j++)
             {
-                board[i][j]="0";
+                board[i][j]=new Space();
             }
         }
-            board[3][1] = "w"; board[3][2] = "w";
-            board[3][4] = "w"; board[3][5] = "w";
-            board[4][1] = "w"; board[4][2] = "w";
-            board[4][4] = "w"; board[4][5] = "w";
-            board[5][1] = "w"; board[5][2] = "w";
-            board[5][4] = "w"; board[5][5] = "w";
+            board[3][1] = new Water(); board[3][2] = new Water();;
+            board[3][4] =new Water(); board[3][5] = new Water();
+            board[4][1] =new Water(); board[4][2] = new Water();
+            board[4][4] =new Water(); board[4][5] = new Water();
+            board[5][1] = new Water(); board[5][2] = new Water();
+            board[5][4] = new Water(); board[5][5] = new Water();
 
 
             board[0][0]=xPieces.get(0); //Lion
