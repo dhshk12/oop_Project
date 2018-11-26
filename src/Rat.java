@@ -50,7 +50,7 @@ class Rat extends Piece {
             else if (convertCheck==1&& temp.getTeam() != this.getTeam() && temp.getClass() != Trap.class) {
                 flag = capture(temp, board);
                 return flag;
-            } else if(convertCheck==1&& temp.getClass()==Trap.class)
+            } else if(convertCheck==1&& temp.getClass()==Trap.class )
             {
                 if(this.getTeam()!=temp.getTeam())
                 {

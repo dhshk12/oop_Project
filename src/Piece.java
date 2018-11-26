@@ -66,42 +66,6 @@ class Piece extends Game {
             Piece p = (Piece) board[to.posX][to.posY];
             p.setLocation(to.posX, to.posY);
         }
-        /*// moving horizontally FOR TIGER & LION
-        else if(to.posX==loc.posX && (board[to.posX][to.posY+1] == "w" || board[to.posX][to.posY-1] == "w"))
-        {
-            if(board[to.posX][to.posY+1] == "w"){
-                if(Math.abs(to.posY - loc.posY) == 3){
-                    if (convertCheck==1&& temp.getTeam() != this.getTeam() && temp.getClass() != Trap.class) {
-                        flag = capture(temp, board);
-                        return flag;
-                    }
-                    else{
-                        Object swap = board[loc.posX][loc.posY];
-                        board[loc.posX][loc.posY] = "0";
-                        board[to.posX][to.posY] = swap;
-
-                        Piece p = (Piece) board[to.posX][to.posY];
-                        p.setLocation(to.posX, to.posY);
-                    }
-                }
-            }
-            else if(board[to.posX][to.posY - 1] == "w"){
-                if(Math.abs(to.posY - loc.posY) == 3){
-                    if (convertCheck==1&& temp.getTeam() != this.getTeam() && temp.getClass() != Trap.class) {
-                        flag = capture(temp, board);
-                        return flag;
-                    }
-                    else{
-                        Object swap = board[loc.posX][loc.posY];
-                        board[loc.posX][loc.posY] = "0";
-                        board[to.posX][to.posY] = swap;
-
-                        Piece p = (Piece) board[to.posX][to.posY];
-                        p.setLocation(to.posX, to.posY);
-                    }
-                }
-            }
-        }*/
         else if(to.posY==loc.posY && Math.abs(to.posX-loc.posX)==1)  //moving vertically
         {
             if(convertCheck==1 && this.getTeam()==temp.getTeam()&&temp.getClass()!=Trap.class)
@@ -140,8 +104,6 @@ class Piece extends Game {
 
         return true;
     }
-
-
 
 
     public boolean capture(Piece other,Object[][] board)

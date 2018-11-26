@@ -1,7 +1,10 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-class Game  {
+
+
+class Game implements Serializable {
 
     private static final long serialVersionUID = 1L;
     private Player x;
@@ -25,6 +28,8 @@ class Game  {
 
     public void start()
     {
+
+
         System.out.println("Enter Player 1's name:");
         x.setName(in.next());
         System.out.println("Enter Player 2's name:");
@@ -34,13 +39,13 @@ class Game  {
 
         while(true) {
             while (status == false) {
-                String command1;
-                System.out.print(x.getName() + ", enter your command: ");
-                command1 = in.next();
+                    String command1;
+                    System.out.print(x.getName() + ", enter your command: ");
+                    command1 = in.next();
 
-                if (command1.substring(0, 4).equals("move")) {
-                    status = moveCommand(x, command1);
-                }
+                    if (command1.substring(0, 4).equals("move")) {
+                        status = moveCommand(x, command1);
+                    }
             }
             printBoard();
             status = false;
@@ -60,8 +65,9 @@ class Game  {
 
     private boolean moveCommand(Player p,String command)
     {
-        ArrayList<Piece> pPieces=p.getPieces();
 
+
+        ArrayList<Piece> pPieces=p.getPieces();
         xEnum x=xEnum.A;
         String from= command.substring(4,6);
         String to=command.substring(6,8);
