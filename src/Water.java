@@ -1,13 +1,10 @@
-class Lion extends Piece {
-
+public class Water extends Piece {
     private String symbol;
-    private Location loc;
-    private int strength;
     private int team;
-    private Object[] store = new Object[1];
 
-    Lion() {
-        this.symbol = "n";
+    Water() {
+        this.symbol = "w";
+        this.team=2;
     }
 
     public String toString() {
